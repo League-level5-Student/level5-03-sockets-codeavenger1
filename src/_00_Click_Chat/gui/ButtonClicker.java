@@ -26,7 +26,7 @@ public class ButtonClicker extends JFrame {
 			setTitle("SERVER");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			button.addActionListener((e)->{
-				server.sendClick();
+				server.sendClick("CLICK SENT FROM SERVER");
 			});
 			add(button);
 			setVisible(true);
@@ -41,7 +41,7 @@ public class ButtonClicker extends JFrame {
 			int port = Integer.parseInt(prtStr);
 			client = new Client(ipStr, port);
 			button.addActionListener((e)->{
-				client.sendClick();
+				client.sendClick("CLICK SENT FROM CLIENT");
 			});
 			add(button);
 			setVisible(true);

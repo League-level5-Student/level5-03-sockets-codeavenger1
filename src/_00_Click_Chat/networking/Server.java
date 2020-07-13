@@ -11,6 +11,8 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import _02_Chat_Application.ChatApp;
+
 public class Server {
 	private int port;
 
@@ -38,6 +40,7 @@ public class Server {
 			while (connection.isConnected()) {
 				try {
 					JOptionPane.showMessageDialog(null, is.readObject());
+					ChatApp.serverMessage.setText((String)is.readObject());
 					System.out.println(is.readObject());
 				}catch(EOFException e) {
 					JOptionPane.showMessageDialog(null, "Connection Lost");
@@ -62,10 +65,10 @@ public class Server {
 		return port;
 	}
 
-	public void sendClick() {
+	public void sendClick(String message) {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM SERVER");
+				os.writeObject(message);
 				os.flush();
 			}
 		} catch (IOException e) {
