@@ -8,6 +8,8 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import _02_Chat_Application.ChatApp;
+
 public class Client {
 	private String ip;
 	private int port;
@@ -40,8 +42,10 @@ public class Client {
 		
 		while (connection.isConnected()) {
 			try {
-				JOptionPane.showMessageDialog(null, is.readObject());
-				System.out.println(is.readObject());
+				String readObject = (String)is.readObject();
+				//JOptionPane.showMessageDialog(null, readObject);
+				ChatApp.clientMessage.setText(readObject);
+				System.out.println(readObject);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
